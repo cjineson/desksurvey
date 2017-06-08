@@ -1,0 +1,27 @@
+mixin deskForm(store = {})
+	form(action="/add" method="POST" class="card")
+		label(for="number") Desk Number
+		input(type="text" name="number")
+		label(for="floor") Floor
+		- const floors = ['First Floor', 'Second Floor']
+		select(id=floor value=floor name="floor")
+			each floor in floors
+				option #{floor}
+		label(for="area") Area
+		- const areas = ['Admin', 'Sales', 'Marketing', 'IT']
+		select(id=area value=area name="area")
+			each area in areas
+				option #{area}
+		label(for="tags") Desk Status
+		- const tags = ['Allocated', 'Occupied']
+		ul.tags
+			each tag in tags
+				.tag.tag__tag
+					input(type="checkbox" id=tag value=tag name="tags")
+					label(for="tags") #{tag}
+		label(for="notes") Notes
+		textarea(name="notes")
+		label(for="notes") Date
+		input(id="date" type="date" value="#{today()}")
+		- console.log(datestr);
+		input(type="submit" value="Save →" class="button")
